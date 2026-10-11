@@ -84,7 +84,7 @@ try:
     fig_pareto = make_subplots(specs=[[{"secondary_y": True}]])
     fig_pareto.add_trace(go.Bar(x=prod_stats['Description'].head(50), y=prod_stats['Revenue'].head(50), name="Revenue"), secondary_y=False)
     fig_pareto.add_trace(go.Scatter(x=prod_stats['Description'].head(50), y=prod_stats['cum_pct'].head(50), name="Cumulative %", line=dict(color='red')), secondary_y=True)
-    fig_pareto.update_layout(title="Product Pareto (80/20 Rule)", template="plotly_white", height=400, xaxis={'categoryorder':'total'})
+    fig_pareto.update_layout(title="Product Pareto (80/20 Rule)", template="plotly_white", height=400, xaxis={'categoryorder':'total ascending'})
 
     prod_stats['MarginPct'] = (1 - COGS_PCT) * 100 + np.random.uniform(-5, 5, len(prod_stats))
     fig_bcg = px.scatter(prod_stats, x='Quantity', y='MarginPct', size='Revenue', 
